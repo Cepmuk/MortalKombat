@@ -57,10 +57,12 @@ class Game {
 
             }
 
+            const battleResult = async () => {
+                await getRoundResult()
+                return await showResult($fightForm, $divArenas, $chat, player1, player2)
+            }
 
-            getRoundResult()
-            showResult($fightForm, $divArenas, $chat, player1, player2)
-
+            battleResult()
         })
     }
 
@@ -76,7 +78,7 @@ class Game {
     }
 
     start = async () => {
-        const p1 = await this.getPlayerChosen()
+        const p1 = JSON.parse(localStorage.getItem('player1'))
         const p2 = await this.getPlayerChosen()
 
         const player1 = new Player({

@@ -11,13 +11,14 @@ const createReloadButton = () => {
   document.querySelector('.root').appendChild($reloadWrap)
 
   $reloadButton.addEventListener('click', function () {
-    window.location.reload()
+    window.location.pathname = './'
   })
 
   return $reloadButton
 }
 
-const showResult = ($fightForm, $divArenas, $chat, player1, player2) => {
+const showResult = async ($fightForm, $divArenas, $chat, player1, player2) => {
+
     if (player1.hp === 0 || player2.hp === 0) {
       $fightForm.disabled = true;
       createReloadButton()
